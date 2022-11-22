@@ -32,6 +32,7 @@ try:
   else:
     back_from_function = get_fruityvice_data(fruit_choice)
     streamlit.dataframe(back_from_function)
+    fruit_choice = None
 except URLError as original_exception:
   streamlit.error()
 
@@ -59,4 +60,5 @@ else:
   my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
   insert_row_snowflake(add_my_fruit)
   my_cnx.close()
+  add_my_fruit = None
 
